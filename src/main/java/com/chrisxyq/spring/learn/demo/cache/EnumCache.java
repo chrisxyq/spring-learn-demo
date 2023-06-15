@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * http://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247533478&idx=1&sn=e490a390880decde70b92ee61047117c&chksm=e92a7ea9de5df7bf6e66513e07acfbdc43957be22ae21715dad79f9c08cdfc2e5c86e7c48916&mpshare=1&scene=24&srcid=0612n8Q9QGUCPWMrropODQVj&sharer_sharetime=1686532900487&sharer_shareid=d484f14ba5ecdc101d8989427775ede5#rd
  * 枚举缓存
  * 减少代码冗余，代码简洁
  * 去掉for循环，性能稳定高效
@@ -17,11 +18,11 @@ public class EnumCache {
     /**
      * 以枚举名称构建的缓存结构
      **/
-    static final Map<Class<? extends Enum>, Map<Object, Enum>> CACHE_BY_NAME = new ConcurrentHashMap<>();
+    static final Map<Class<? extends Enum>, Map<Object, Enum>> CACHE_BY_NAME  = new ConcurrentHashMap<>();
     /**
      * 枚举静态块加载标识缓存结构
      */
-    static final Map<Class<? extends Enum>, Boolean> LOADED = new ConcurrentHashMap<>();
+    static final Map<Class<? extends Enum>, Boolean>           LOADED         = new ConcurrentHashMap<>();
 
 
     /**
@@ -117,7 +118,7 @@ public class EnumCache {
             }
             throw new RuntimeException(msg);
         }
-        if(obj == null){
+        if (obj == null) {
             return defaultEnum;
         }
         Enum result = map.get(obj);
