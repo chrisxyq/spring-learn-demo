@@ -41,7 +41,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("student")
-public class StudentController {
+public class ExcelController {
     @Autowired
     private WebStudentListener webStudentListener;
 
