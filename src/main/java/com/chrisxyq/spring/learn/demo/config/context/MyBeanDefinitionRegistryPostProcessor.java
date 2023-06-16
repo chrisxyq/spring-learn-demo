@@ -1,4 +1,4 @@
-package com.chrisxyq.spring.learn.demo.config;
+package com.chrisxyq.spring.learn.demo.config.context;
 
 
 import com.chrisxyq.spring.learn.demo.service.SystemConfigService;
