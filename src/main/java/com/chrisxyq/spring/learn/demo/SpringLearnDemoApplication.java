@@ -2,9 +2,13 @@ package com.chrisxyq.spring.learn.demo;
 
 import com.chrisxyq.spring.learn.demo.config.context.MyApplicationContextInitializer;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan("com.chrisxyq.spring.learn.demo")
 public class SpringLearnDemoApplication {
 
     public static void main(String[] args) {
