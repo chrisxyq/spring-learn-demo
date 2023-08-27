@@ -9,6 +9,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * 继承spring线程池，执行任务时，打印线程信息
+ */
 public class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
 
 

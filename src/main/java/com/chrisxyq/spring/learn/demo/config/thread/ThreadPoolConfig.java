@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
 public class ThreadPoolConfig {
     /**
      * new ThreadPoolExecutor.AbortPolicy():拒绝并且抛异常
-     *
+     * 动态化线程池提供了多个维度的监控和告警能力，包括：线程池活跃度、任务的执行Transaction（频率、耗时）、Reject异常、线程池内部统计信息等等
+     * 程池活跃度计算公式为：线程池活跃度 = activeCount/maximumPoolSize。这个公式代表当活跃线程数趋向于maximumPoolSize的时候，代表线程负载趋高
      * @return
      */
     @Bean

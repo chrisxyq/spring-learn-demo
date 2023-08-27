@@ -1,5 +1,6 @@
 package com.chrisxyq.spring.learn.demo;
 
+import com.chrisxyq.spring.learn.demo.config.thread.VisibleThreadPoolTaskExecutor;
 import com.chrisxyq.spring.learn.demo.service.AsyncService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class ThreadPoolConfigDemo {
             try {
                 Thread.sleep(1000);
                 abortPolicyExecutor.execute(() -> {
+                    System.out.println("==ActiveCount:" + abortPolicyExecutor.getActiveCount()
+                            + "completedTaskCount:" + abortPolicyExecutor.getCompletedTaskCount()
+                            + "CorePoolSize:" + abortPolicyExecutor.getCorePoolSize()
+                            + "PoolSize:" + abortPolicyExecutor.getPoolSize()
+                            + "TaskCount:" + abortPolicyExecutor.getTaskCount());
                     try {
                         System.out.println("Thread.currentThread().getName():" +
                                 Thread.currentThread().getName() + "、current index:" + finalI);
@@ -42,6 +48,8 @@ public class ThreadPoolConfigDemo {
             } catch (RejectedExecutionException e) {
                 //todo：拒绝策略为抛出异常，则在metric埋点或者发邮件告警
                 System.out.println("execute rejected, current index:" + finalI);
+            }finally {
+                //abortPolicyExecutor.shutdown();
             }
         }
         Thread.sleep(1000000);
@@ -58,6 +66,11 @@ public class ThreadPoolConfigDemo {
             int finalI = i;
             Thread.sleep(1000);
             callerRunsPolicyExecutor.execute(() -> {
+                System.out.println("==ActiveCount:" + callerRunsPolicyExecutor.getActiveCount()
+                        + "completedTaskCount:" + callerRunsPolicyExecutor.getCompletedTaskCount()
+                        + "CorePoolSize:" + callerRunsPolicyExecutor.getCorePoolSize()
+                        + "PoolSize:" + callerRunsPolicyExecutor.getPoolSize()
+                        + "TaskCount:" + callerRunsPolicyExecutor.getTaskCount());
                 try {
                     if(Thread.currentThread().getName().equals("main")){
                         //todo：任务由主线程执行，埋点做监控
@@ -69,6 +82,8 @@ public class ThreadPoolConfigDemo {
                     Thread.sleep(10000);
                 } catch (Exception e) {
                     System.out.println("Exception");
+                }finally {
+                    //callerRunsPolicyExecutor.shutdown();
                 }
             });
         }
